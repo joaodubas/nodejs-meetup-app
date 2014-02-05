@@ -16,7 +16,11 @@ MOUNT_APP=-v $(ROOT)/app:/opt/app
 MOUNT_SUPERVISOR=-v $(ROOT)/supervisor:/etc/supervisor/conf.d/hook.d
 MOUNT=$(MOUNT_APP) $(MOUNT_SUPERVISOR)
 
+ENV=-e NODE_PORT=3001
+
 WORKDIR=-w /opt/app
+
+ARGS=$(PORT) $(CONTAINER) $(MOUNT) $(WORKDIR) $(IMAGE)
 
 DB_IMAGE=joaodubas/multilevel:latest
 DB_CONTAINER_NAME=meetup_db
