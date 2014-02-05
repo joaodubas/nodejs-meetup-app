@@ -4,7 +4,7 @@ NODE=-entrypoint /usr/local/bin/node
 NPM=-entrypoint /usr/local/bin/npm
 
 IMAGE=joaodubas/nodejs:latest
-CONTAINER_NAME=meetup
+CONTAINER_NAME=meetup_app
 CONTAINER=-name $(CONTAINER_NAME)
 
 PORT_SSH=-p 40051:22
