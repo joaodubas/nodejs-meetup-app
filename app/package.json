@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-meetup",
+  "version": "0.0.1",
+  "description": "Sample app for nodejs meetup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "meetup"
+  ],
+  "author": "Joao Paulo Dubas <joao.dubas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "multilevel": "~5.5.0",
+    "jade": "~1.1.5",
+    "express": "~3.4.8"
+  }
+}
