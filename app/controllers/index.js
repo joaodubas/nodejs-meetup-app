@@ -12,14 +12,24 @@ exports.remove = remove;
 function list(req, resp, next) {}
 
 /**
+ * Filter note instances
+ */
+function filter(req, resp, next) {}
+
+/**
  * Create a note instance.
  */
 function create(req, resp, next) {}
 
 /**
- * Update a note instance.
+ * Mark all notes as done.
  */
-function update(req, resp, next) {}
+function allDone(req, resp, next) {}
+
+/**
+ * Mark note instance as done.
+ */
+function done(req, resp, next) {}
 
 /**
  * Remove a note instance.
