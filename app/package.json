@@ -15,6 +15,7 @@
   "dependencies": {
     "multilevel": "~5.5.0",
     "jade": "~1.1.5",
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "slug": "~0.4.0"
   }
 }
