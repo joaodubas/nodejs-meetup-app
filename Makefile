@@ -78,10 +78,12 @@ start: start_db start_hud
 stop:
 	@docker kill $(SRV_CONTAINER_NAME) && docker rm $(SRV_CONTAINER_NAME);
 
+stop-all: stop stop_hud stop_db
+
 shell: start_db
 	@$(SRV_CMD_SHELL); $(MAKE) stop; $(MAKE) stop_db
 
 install:
 	@$(SRV_CMD_NPM); $(MAKE) stop
 
-.PHONY: start stop shell
+.PHONY: start stop shell stop-all
