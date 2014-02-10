@@ -27,7 +27,7 @@ Note.prototype.remove = removeInstance;
 
 /**
  * Convert a note instance into a JSON string.
- * @param {Note} note: instance to be stringified
+ * @param {Note} note: instance to be stringified.
  * @return {String} the instance as a JSON string.
  */
 function toJSON(note) {
@@ -38,9 +38,12 @@ function toJSON(note) {
     });
 }
 
+/**
+ * Convert a string of details into a Note instance.
+ * @param {String} details: a string representation of a json.
+ * @return {Note} the string as a Note instance.
+ */
 function toNote(details) {
-  console.log(details);
-  console.log(JSON.parse(details));
   return new Note(JSON.parse(details));
 }
 
@@ -75,13 +78,17 @@ function create(details, fn) {
   );
 }
 
+/**
+ * Remove the given slug from the database
+ * @param {String} slug: slug part of note id.
+ * @param {Function} fn: callback to be execute after the note is removed,
+ * receives an error || null and the note instance.
+ */
 function remove(slug, fn) {
   var _id = this.setId(slug);
-  console.log('id', _id);
   db.get(_id, function (err, data) {
     var details = toNote(data);
     db.del(_id, function (err) {
-      console.log(err);
       fn(err, details);
     });
   });
