@@ -29,6 +29,7 @@ function csrf(req, res, next) {
 app.get('/', csrf, function (req, res) {
   res.render('app', {});
 });
+app.get('/api/list', controllers.list);
 app.post('/api/create', csrf, controllers.create);
 app.delete('/api/:slug/delete', controllers.remove);
 
