@@ -9,7 +9,7 @@ module.exports = exports = Note;
  */
 function Note(details) {
   if (!(this instanceof Note)) {
-    return new Note(note);
+    return new Note(details);
   }
 
   this.note = details['note'];
@@ -24,6 +24,7 @@ Note.create = create;
 Note.remove = remove;
 Note.setId = setId;
 Note.prototype.remove = removeInstance;
+Note.prototype.toJSON = function () { return toJSON(this); };
 
 /**
  * Convert a note instance into a JSON string.
@@ -53,7 +54,7 @@ function toNote(details) {
  * @return {Stream}: a readable stream with objectMode set to true
  */
 function all() {
-  return db.createRpcStream();
+  return db.createReadStream();
 }
 
 /**
