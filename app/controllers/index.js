@@ -28,17 +28,19 @@ var TEMPLATE = '';
   });
 })();
 util.inherits(RenderStream, stream.Transform);
-function RenderStream(options) {
+function RenderStream(csrf, options) {
   if (!this instanceof RenderStream) {
-    return new Render(options);
+    return new Render(csrf, options);
   }
   stream.Transform.call(this, options);
   this._writableState.objectMode = true;
   this._readableState.objectMode = false;
+  this.csrf = crsf;
 
 }
 RenderStream.prototype._transform = function _transform(chunk, encoding, callback) {
   var note = JSON.parse(chunk.value);
+  note.csrf = this.csrf;
   this.push(TEMPLATE(note));
   callback();
 };
@@ -51,7 +53,7 @@ RenderStream.prototype._flush = function _flush(callback) {
  */
 function list(req, res, next) {
   var stream = Note.all();
-  var transform = new RenderStream();
+  var transform = new RenderStream(req.csrfToken());
   stream.pipe(transform).pipe(res);
 }
 
