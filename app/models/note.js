@@ -54,7 +54,7 @@ function toNote(details) {
  * @return {Stream}: a readable stream with objectMode set to true
  */
 function all() {
-  return db.createReadStream();
+  return db.createReadStream({start: this._key, end: this._key + '\xff'});
 }
 
 /**
