@@ -38,7 +38,8 @@ function RenderStream(options) {
 
 }
 RenderStream.prototype._transform = function _transform(chunk, encoding, callback) {
-  this.push(TEMPLATE(chunk.value));
+  var note = JSON.parse(chunk.value);
+  this.push(TEMPLATE(note));
   callback();
 };
 RenderStream.prototype._flush = function _flush(callback) {
