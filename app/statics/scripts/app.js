@@ -4,6 +4,16 @@
   var $message = $('#app-note-message');
 
   var Note = window.Note || {};
+  Note.list = function list() {
+    $.ajax({
+      type: 'GET',
+      url: '/api/list',
+      success: function (data) {
+        $container.append(data);
+      },
+      dataType: 'html'
+    });
+  };
   Note.create = function create(e) {
     e.preventDefault();
     var formData = $form.serialize();
@@ -41,6 +51,7 @@
 
   $form.on('submit', Note.create);
   $container.on('click', '.close', Note.remove);
+  $(document).ready(Note.list);
 
   window.Note = Note;
 })(window, window.document, jQuery);
