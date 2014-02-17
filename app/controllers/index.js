@@ -35,7 +35,7 @@ function RenderStream(csrf, options) {
   stream.Transform.call(this, options);
   this._writableState.objectMode = true;
   this._readableState.objectMode = false;
-  this.csrf = crsf;
+  this.csrf = csrf;
 
 }
 RenderStream.prototype._transform = function _transform(chunk, encoding, callback) {
