@@ -10,11 +10,11 @@ db._makeKey = makeKey;
 
 
 var conn = net.connect({
-  port: parseInt(process.env.DB_PORT_3001_TCP_PORT),
-  host: process.env.DB_PORT_3001_TCP_ADDR
+  port: parseInt(process.env.LVLDB_PORT),
+  host: process.env.LVLDB_HOST
 });
 
-console.log('Connect to multilevel through ' + process.env.DB_PORT_3001_TCP_ADDR + ':' + process.env.DB_PORT_3001_TCP_PORT);
+console.log('Connect to multilevel through ' + process.env.LVLDB_HOST + ':' + process.env.LVLDB_PORT);
 conn.pipe(db.createRpcStream()).pipe(conn);
 
 module.exports = exports = db;
