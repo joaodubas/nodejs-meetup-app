@@ -2,6 +2,15 @@
 
 Aplicação para palestra de desenvolvimento nodejs com docker.
 
+## Instalando a aplicação
+
+Antes de rodar a aplicação é necessário instalar suas dependências, para tal
+use:
+
+```shell
+$ make install
+```
+
 ## Rodando a aplicação
 
 É necessário ter o [docker][docker] [instalado][docker-install] e rodando em
@@ -27,15 +36,24 @@ fim o container `meetup_app` é baseado na imagem
 
 As aplicações estão disponíveis nas _url_s:
 
-1. http://127.0.0.1:8001 para acesso ao `meetup_app`
-2. http://127.0.0.1:8002 para acesso ao `hud_db`
+1. http://127.0.0.1:10000 para acesso ao `meetup_app`
+2. http://127.0.0.1:10002 para acesso ao `hud_db`
 
 ## Parando a aplicação
 
 Para encerrar as imagens é necessário rodar:
 
 ```shell
-$ make stop-all
+$ make stop
+```
+
+## Node REPL
+
+Caso queira usar o `repl` do `node` para executar o código da aplicação:
+
+```shell
+$ make start_db
+$ make shell
 ```
 
 ## LICENÇA

@@ -71,6 +71,7 @@ shell:
 	@$(SRV_CMD_SHELL)
 
 install:
-	@$(SRV_CMD_NPM)
+	@echo $(SRV_CMD_NPM)install
+	@$(SRV_CMD_NPM) install
 
 .PHONY: start stop start_app stop_app start_hud stop_hud start_db stop_db shell
