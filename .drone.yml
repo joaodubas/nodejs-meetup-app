@@ -1,0 +1,15 @@
+image: joaodubas/nodejs
+env:
+    - LVLDB_HOST: db
+    - LVLDB_PORT: 3001
+script:
+    - npm install
+    - npm test
+cache:
+    - .node_modules
+services:
+    - joaodubas/multilevel
+notify:
+    email:
+        recipients:
+            - joao.dubas@gmail.com
