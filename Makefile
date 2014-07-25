@@ -17,8 +17,9 @@ DB_LNK=--link $(DB_CONTAINER_NAME):db \
 # --- APPLICATION -------------------------------------------------------------
 SRV_IMAGE=joaodubas/nodejs:latest
 SRV_CONTAINER_NAME=meetup_app
-SRV_SHELL_OPTS=-v $(ROOT)/app:/opt/app \
-	-w /opt/app $(DB_LNK)
+SRV_NPM_OPTS=-v $(ROOT)/app:/opt/app \
+	-w /opt/app
+SRV_SHELL_OPTS=$(SRV_NPM_OPTS) $(DB_LNK)
 SRV_OPTS=--name $(SRV_CONTAINER_NAME) \
 	--expose 3000 \
 	--env NODE_PORT=3000 \
@@ -40,11 +41,12 @@ DB_CMD=$(CMD) -d $(DB_OPTS) $(DB_IMAGE)
 
 HUD_CMD=$(CMD) -d $(HUD_OPTS) $(HUD_IMAGE)
 
+SRV_NPM_ARGS=$(SRV_NPM_OPTS) $(SRV_IMAGE)
 SRV_SHELL_ARGS=$(SRV_SHELL_OPTS) $(SRV_IMAGE)
 SRV_ARGS=$(SRV_OPTS) $(SRV_IMAGE)
 SRV_CMD_SERVICE=$(CMD) -d $(SRV_ARGS)
 SRV_CMD_SHELL=$(CMD) -i -t --rm $(NODE) $(SRV_SHELL_ARGS) --interactive
-SRV_CMD_NPM=$(CMD) -i -t --rm $(NPM) $(SRV_SHELL_ARGS) $(args)
+SRV_CMD_NPM=$(CMD) -i -t --rm $(NPM) $(SRV_NPM_ARGS) $(args)
 
 start_db:
 	@$(DB_CMD)
@@ -71,7 +73,6 @@ shell:
 	@$(SRV_CMD_SHELL)
 
 install:
-	@echo $(SRV_CMD_NPM)install
-	@$(SRV_CMD_NPM) install
+	@$(SRV_CMD_NPM)install
 
 .PHONY: start stop start_app stop_app start_hud stop_hud start_db stop_db shell
