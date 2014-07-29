@@ -3,8 +3,8 @@ env:
     - LVLDB_HOST: db
     - LVLDB_PORT: 3001
 script:
-    - npm install
-    - npm test
+    - cd app && npm install
+    - cd app && npm test
 cache:
     - .node_modules
 services:
