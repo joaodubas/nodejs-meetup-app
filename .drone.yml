@@ -1,7 +1,7 @@
 image: joaodubas/nodejs
 env:
-    - LVLDB_HOST: db
-    - LVLDB_PORT: 3001
+    - LVLDB_HOST=db
+    - LVLDB_PORT=3001
 script:
     - cd app
     - npm install
