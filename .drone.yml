@@ -5,8 +5,6 @@ env:
 script:
     - cd app && npm install
     - cd app && npm test
-cache:
-    - .node_modules
 services:
     - joaodubas/multilevel
 notify:
