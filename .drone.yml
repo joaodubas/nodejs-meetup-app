@@ -3,8 +3,9 @@ env:
     - LVLDB_HOST: db
     - LVLDB_PORT: 3001
 script:
-    - cd app && npm install
-    - cd app && npm test
+    - cd app
+    - npm install
+    - npm test
 services:
     - joaodubas/multilevel
 notify:
